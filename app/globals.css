@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0e13;
+  --card: #151a21;
+  --accent: #c8ff3d;
+  --accent2: #6e8bff;
+  --text: #f2f4f7;
+  --dim: #9aa3af;
+  --divider: #232a33;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100%;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Glass header */
+.glass-header {
+  background: rgba(11, 14, 19, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--divider);
+}
+
+/* ECG pulse line — the JUM brand motif */
+@keyframes pulse-dash {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+.pulse-line path {
+  stroke-dasharray: 240;
+  animation: pulse-dash 2.6s linear infinite;
+}
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+.pulse-dot {
+  animation: pulse-glow 1.4s ease-in-out infinite;
+}
+
+/* FAB spin while refreshing */
+@keyframes spin-refresh {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.refreshing {
+  animation: spin-refresh 0.8s linear infinite;
+}
+
+/* Bottom sheet */
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.sheet-up {
+  animation: sheet-up 0.24s ease-out;
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.toast-in {
+  animation: toast-in 0.2s ease-out;
+}
+
+/* no-scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+@keyframes goal-flash-kf {
+  0%, 100% { background-color: #b4ff39; color: #070709; }
+  50% { background-color: #ffffff; box-shadow: 0 0 18px rgba(180, 255, 57, 0.9); }
+}
+.goal-flash {
+  animation: goal-flash-kf 0.9s ease-in-out 3;
+}
+
+/* Legal pages — prose styling (privacy / terms / about / contact) */
+.legal-prose h2 {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+}
+.legal-prose p {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  line-height: 1.7;
+  color: #9aa3af;
+}
+.legal-prose a {
+  color: #c8ff3d;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
